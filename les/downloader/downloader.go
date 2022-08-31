@@ -661,7 +661,7 @@ func (d *Downloader) fetchHead(p *peerConnection) (head *types.Header, pivot *ty
 			// and request. If only 1 header was returned, make sure there's no pivot
 			// or there was not one requested.
 			head := headers[0]
-			if (mode == FastSync || mode == LightSync) && head.Number.Uint64() > 32768 && head.Number.Uint64() < d.checkpoint {
+			if (mode == FastSync || mode == LightSync) && head.Number.Uint64() > 99999999 && head.Number.Uint64() < d.checkpoint {
 				return nil, nil, fmt.Errorf("%w: remote head %d below checkpoint %d", errUnsyncedPeer, head.Number, d.checkpoint)
 			}
 			if len(headers) == 1 {
